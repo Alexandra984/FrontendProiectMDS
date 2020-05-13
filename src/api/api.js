@@ -1,1 +1,1 @@
-export const apiLink = (link) => link
+export const apiLink = 'http://07c0d56a.ngrok.io';
