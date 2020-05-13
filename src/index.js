@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 
+import thunkMiddleWare from 'redux-thunk';
 import { checkInput, createMessage, ExitTest } from './reducers';
 
 import './index.css';
@@ -10,7 +11,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const rootReducer = combineReducers({checkInput, createMessage, ExitTest});
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
 
 ReactDOM.render(
   <React.StrictMode>
