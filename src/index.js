@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
-import {verifyUser, verifyButton} from './reducers';
+import { checkInput, createMessage, ExitTest } from './reducers';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const rootReducer = combineReducers({verifyUser, verifyButton});
+const rootReducer = combineReducers({checkInput, createMessage, ExitTest});
 const store = createStore(rootReducer);
 
 ReactDOM.render(

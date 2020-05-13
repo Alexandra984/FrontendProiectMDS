@@ -1,27 +1,41 @@
-import {INPUT_TEXT_CHANGE,
-        BUTTON_CLICK} from './constants';
+import {CHANGE_INPUT,
+        CLICK_BUTTON,
+        CLICK_BUTTON_EXIT} from './constants';
 
-const initialStateUser = {
-    cuvant: ""
+const initialStateInput = {
+    word: ""
 }
 
-const initialStateVerify = {
+const initialStateButton = {
     isClicked: false
 }
 
-export const verifyUser = (state=initialStateUser, action={}) => {
+const initialStateButtonExit = {
+    isClicked: false
+}
+
+export const checkInput = (state=initialStateInput, action={}) => {
     switch(action.type) {
-        case INPUT_TEXT_CHANGE:
-            return Object.assign({}, state, {cuvant: action.payload});
+        case CHANGE_INPUT:
+            return Object.assign({}, state, {word: action.payload});
         default:
             return state;
     }
 }
 
-export const verifyButton = (state=initialStateVerify, action={}) => {
+export const createMessage = (state=initialStateButton, action={}) => {
     switch(action.type) {
-        case BUTTON_CLICK:
-            return Object.assign({}, state, {isClicked:true});
+        case CLICK_BUTTON:
+            return Object.assign({}, state, {isClicked: true});
+        default:
+            return state;
+    }
+}
+
+export const ExitTest = (state=initialStateButtonExit, action={}) => {
+    switch(action.type) {
+        case CLICK_BUTTON_EXIT:
+            return Object.assign({}, state, {isClicked: true});
         default:
             return state;
     }

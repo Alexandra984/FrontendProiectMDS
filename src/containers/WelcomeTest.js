@@ -1,55 +1,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {setTextInput,
-        verifyButtonClicked} from '../actions';
+import {changeInput, clickButton, clickButtonExit} from '../actions';
 
 import Input from '../components/Input';
+import './WelcomeTest.css';
+import TestResponse from '../components/TestResponse';
 
 const mapStateToProps = state => {
     return {
-        cuvant: state.verifyUser.cuvant,
-        isClicked: state.verifyButton.isClicked
+        word: state.checkInput.word,
+        isClicked: state.createMessage.isClicked,
+        isClickedToExit: state.ExitTest.isClicked
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSetTextInput: (event) => dispatch(setTextInput(event.target.value)),
-        onCLickButton: () => dispatch(verifyButtonClicked())
+        onChangeInput: (event) => dispatch(changeInput(event.target.value)),
+        onClickButton: () => dispatch(clickButton()),
+        onClickButtonExit: () => dispatch(clickButtonExit())
     }
 }
 
 class WelcomeTest extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            correctAnswer: false
-        }
-    }
-    
-    verifyAnswer = (cuvant) => {
-        if (cuvant.trim() === 'bilet') {
-            this.setState({correctAnswer: true})
-        }
-    }
-    
     render() {
-        const {cuvant, onSetTextInput, isClicked, onCLickButton} = this.props;
-        console.log("cuvant este "+ cuvant);
-        console.log(isClicked);
-        if (isClicked === true) {
-            const f = () => {this.verifyAnswer(cuvant)};
+        const {word, onChangeInput, onClickButton, onClickButtonExit, isClicked, isClickedToExit} = this.props;
+        console.log("exit button? " + isClickedToExit);
+        console.log(word);
+        console.log("Butonul a fost apasat? " + isClicked);
+        let isManelist = false;
+        if (word.trim() === 'bilet') {
+            isManelist = true;
         }
-        console.log(this.state);
+        console.log("este userul un manelist? " + isManelist);
+        
+        let message='';
+        if (isClicked=== true && isManelist === true) {
+            message="ADEVARAAAAAT!"
+        } else if (isClicked=== true && isManelist === false){
+            message="ROACHERE, FUGI DAICI LA PLETOSI TAI!"
+        } 
 
-        return (
-            <div className="welcomeTest">
-                <h1>Completeaza urmatorul vers:</h1>
-                <p>Am gasit in geanta ta un <Input type="text" change={onSetTextInput}/> de la altcineva...</p>
-                <button onClick={onCLickButton}>Verifica</button>
-            </div>
-        )
+        console.log("mesajul pentru user este: " + message); 
+        if (!isClickedToExit) {
+            return(
+                <div className="WelcomeTest">
+                    {message ? <TestResponse message={message} clicked={onClickButtonExit} /> : 
+                    ( <div>
+                        <h1>Completeaza versul urmator:</h1>
+                    <p>Am gasit in geanta ta un <Input 
+                    change={onChangeInput} /> de la altcineva...</p>
+                    <button onClick={onClickButton}>Verifica!</button>
+                    </div>)
+                    }
+                </div>
+            )
+
+        } else {
+            return (<h3>Alege ce vrei sa faci!</h3>);
+        }
     }
 }
 

@@ -1,3 +1,5 @@
-export const INPUT_TEXT_CHANGE = 'INPUT_TEXT_CHANGE';
+export const CHANGE_INPUT = 'CHANGE_INPUT';
 
-export const BUTTON_CLICK = 'BUTTON_CLICK';
+export const CLICK_BUTTON = 'CLICK_BUTTON';
+
+export const CLICK_BUTTON_EXIT = 'CLICK_BUTTON_EXIT';

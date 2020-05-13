@@ -1,11 +1,16 @@
-import {INPUT_TEXT_CHANGE,
-        BUTTON_CLICK} from './constants';
+import {CHANGE_INPUT,
+        CLICK_BUTTON,
+        CLICK_BUTTON_EXIT} from './constants';
 
-export const setTextInput = (text) => ({
-    type: INPUT_TEXT_CHANGE,
+export const changeInput = (text) => ({
+    type: CHANGE_INPUT,
     payload: text
-});
+})
 
-export const verifyButtonClicked = () => ({
-    type: BUTTON_CLICK
+export const clickButton = () => ({
+    type: CLICK_BUTTON
+})
+
+export const clickButtonExit = () => ({
+    type: CLICK_BUTTON_EXIT
 })
