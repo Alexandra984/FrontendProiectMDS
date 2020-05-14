@@ -2,19 +2,22 @@ import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
 import ManeleList from "../components/ManeleList";
-import  {requestManeleByArtist} from '../actions';
+import  {requestManeleByArtist, changeInput} from '../actions';
 
 const mapStateToProps = state => {
     return {
-        maneleByArtists: state.requestManeleByArtists.manele,
-        isPending: state.requestManeleByArtists.isPending
+        // artists
+        artistRequest: state.requestManeleByArtists.manele,
+        isPending: state.requestManeleByArtists.isPending,
+        artist: state.checkInputArtist.artist
         
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onRequestManeleByArtists: () => dispatch(requestManeleByArtist())
+        onRequestManeleByArtists: (artist) => dispatch(requestManeleByArtist(artist)),
+        onChangeInput: (event) => dispatch(changeInput(event.target.value))
     }
 }
 
@@ -25,17 +28,25 @@ class ManeleSection extends React.Component {
     // }
 
     render() {
-        const {maneleByArtists} = this.props;
-        console.log(maneleByArtists);
+        const {artist, onChangeInput, onRequestManeleByArtists, artistRequest} = this.props;
+        console.log(artist);
+        console.log(artistRequest);
+        
         return (
             <div style={{border: "1px solid blue", height: "500px"}}>
                 <Option 
-                    instructions="Vezi manele ca un manelist adevarat"
+                    instructions="Cauta artistul de muzica clasica:"
                     instruction1="artist"
-                    instruction2="dupa gen"
-                    instruction3="cauta manea"
+                    change={onChangeInput}
+                    clicked={() => onRequestManeleByArtists(artist)}
                 />
-                <ManeleList />
+                <Option 
+                    instructions="Cauta artistul dupa gen:"
+                    instruction1="gen"
+                />
+                {artistRequest.name ? <ManeleList artist={artistRequest} /> : null}
+
+
             </div>
         )
     }

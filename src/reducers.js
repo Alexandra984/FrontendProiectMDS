@@ -24,7 +24,8 @@ const initialStateManeleByArtist = {
 }
 
 const initialStateInputArtist = {
-    artist: ""
+    artist: "",
+    emptyInput: false
 }
 
 export const checkInput = (state=initialStateInput, action={}) => {
@@ -39,7 +40,7 @@ export const checkInput = (state=initialStateInput, action={}) => {
 export const checkInputArtist = (state=initialStateInputArtist, action={}) => {
     switch(action.type) {
         case CHANGE_INPUT:
-            return Object.assign({}, state, {action: action.payload});
+            return Object.assign({}, state, {artist: action.payload, emptyInput: true});
         default:
             return state;
     }

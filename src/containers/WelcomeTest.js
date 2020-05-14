@@ -26,14 +26,11 @@ const mapDispatchToProps = dispatch => {
 class WelcomeTest extends Component {
     render() {
         const {word, onChangeInput, onClickButton, onClickButtonExit, isClicked, isClickedToExit} = this.props;
-        console.log("exit button? " + isClickedToExit);
-        console.log(word);
-        console.log("Butonul a fost apasat? " + isClicked);
         let isManelist = false;
         if (word.trim() === 'bilet') {
             isManelist = true;
         }
-        console.log("este userul un manelist? " + isManelist);
+       
         
         let message='';
         if (isClicked=== true && isManelist === true) {
@@ -42,7 +39,6 @@ class WelcomeTest extends Component {
             message="ROACHERE, FUGI DAICI LA PLETOSI TAI!"
         } 
 
-        console.log("mesajul pentru user este: " + message); 
         if (!isClickedToExit) {
             return(
                 <div className="WelcomeTest">

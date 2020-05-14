@@ -25,12 +25,10 @@ const requestOptions = {
     redirect: 'follow'
   };
 
-const artist="Susanu";
-
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-export const requestManeleByArtist = () => (dispatch) => {
+export const requestManeleByArtist = (artist) => (dispatch) => {
     dispatch({type: REQUEST_MANEA_ARTIST_PENDING})
     fetch(`${apiLink}/artist/one?name=${artist}`, requestOptions)
     .then(response => response.json())
