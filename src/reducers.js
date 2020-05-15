@@ -151,7 +151,7 @@ export const requestArtistR = (state=initialStateArtist, action={}) => {
 }
 
 const initialStateClickedArtist = {
-    artistClicked: ""
+    artistClicked: "hello"
 }
 
 export const clickArtistR = (state=initialStateClickedArtist, action={}) => {

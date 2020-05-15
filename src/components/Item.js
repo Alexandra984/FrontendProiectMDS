@@ -2,7 +2,7 @@ import React from "react";
 
 const Item = (props) => {
     return (
-        <p onClick={props.click(props.name)}>{props.name}</p>
+        <li key={props.name} onClick={props.click} data-name={props.name}>{props.name}</li>
     ) 
 }
 export default Item; 

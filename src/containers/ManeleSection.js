@@ -10,7 +10,8 @@ const mapStateToProps = state => {
         // allArtists: state.requestAllArtistsR.allArtists,
         artist: state.requestArtistR.artist,
         clickedArtist: state.clickArtistR.artistClicked,
-        displayInfoManele: state.requestAllManeleR.displayManele
+        displayInfoManele: state.requestAllManeleR.displayManele,
+        allArtists: state.requestAllArtistsR.allArtists
     }
 }
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
         onRequestAllManele: () => dispatch(requestAllManele()),
         onRequestAllArtists: () => dispatch(requestAllArtists()),
         onRequestArtist: (artist) => dispatch(requestArtist('salam')),
-        onClickArtist: (event) => dispatch(clickArtist(event.target.text())) // aici trebuie sa ma uit mai bine cum se face dar ceva de genul asta
+        onClickArtist: (event) => dispatch(clickArtist(event)) // aici trebuie sa ma uit mai bine cum se face dar ceva de genul asta
     }
 }
 
@@ -32,18 +33,15 @@ class ManeleSection extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.onRequestAllArtists();
+        this.props.onRequestAllArtists();
     }
 
-
-
     render() {
-        const {allManele, onRequestAllManele, artist} = this.props;
-        const maneleTitles = allManele.map(manea => manea.title);
-        console.log(maneleTitles);
-        // console.log(allArtists);
-        console.log(this.props.displayInfoManele)
-        console.log(artist);
+        console.log(this.props.clickedArtist);
+        const {allManele, onRequestAllManele, artist, allArtists} = this.props;
+        console.log(allArtists);
+        const names = allArtists.map(artist => artist.name);
+        // console.log(names);
 
         // all Manele
         return (
@@ -57,6 +55,8 @@ class ManeleSection extends React.Component {
                 <Option
                     instruction1="Cauta un artist!" 
                     dropdown={true}
+                    names={allArtists.map(artist => artist.name)}
+                    ids={allArtists.map(artist => artist.id )}
                     // click={this.props.onRequestArtist}
                     /> 
                 {this.props.displayInfoManele ? 
@@ -65,7 +65,8 @@ class ManeleSection extends React.Component {
                      gendre={manea.gendre}
                      link={manea.link}
                      artist={manea.artist}
-                     key={manea.id} />)
+                     key={manea.id}
+                     click={this.props.onClickArtist} />)
                       : null}
                  
             </div>
