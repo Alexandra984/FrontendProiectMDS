@@ -17,6 +17,8 @@
     display: none;
     background-color: skyblue;
     min-width: 200px;
+    height: 200px;
+    overflow: scroll;
 }
 .dropdown-child a {
     color: blue;

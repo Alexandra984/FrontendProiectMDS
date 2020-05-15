@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import thunkMiddleWare from 'redux-thunk';
-import { checkInput, createMessage, ExitTest, requestManeleByArtists,  checkInputArtist } from './reducers';
+import { checkInput, createMessage, ExitTest, requestAllManeleR, requestAllArtistsR, requestArtistR, clickArtistR} from './reducers';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const rootReducer = combineReducers({checkInput, createMessage, ExitTest, requestManeleByArtists, checkInputArtist});
+const rootReducer = combineReducers({checkInput, createMessage, ExitTest, requestAllManeleR, requestAllArtistsR, requestArtistR, clickArtistR});
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
 
 ReactDOM.render(

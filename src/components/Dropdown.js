@@ -3,7 +3,7 @@ import './Dropdown.css';
 const Dropdown = (props) => {
     return (
     <div className="dropdown">
-        <button className="mainmenubtn">Main Menu</button>
+        <button onClick={props.click} className="mainmenubtn">Main Menu</button>
             <div className="dropdown-child">
             <a href="http://wwww.yourdomain.com/page1.html">Sub Menu 1</a>
             <a href="http://wwww.yourdomain.com/page2.html">Sub Menu 2</a>

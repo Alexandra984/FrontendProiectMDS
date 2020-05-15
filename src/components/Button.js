@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Button = props => {
+const Button = (props) => {
     return (
-        <Button>{props.text}</Button>
+        <button onClick={props.click}>{props.message}</button>
     )
 }
 

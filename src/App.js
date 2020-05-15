@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import WelcomeTest from './containers/WelcomeTest';
+// import WelcomeTest from './containers/WelcomeTest';
 import Layout from './components/Layout';
 import ManeleSection from './containers/ManeleSection';
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Layout>
-        <WelcomeTest />
+        {/* <WelcomeTest /> */}
         <ManeleSection />
         </Layout>
       </div>

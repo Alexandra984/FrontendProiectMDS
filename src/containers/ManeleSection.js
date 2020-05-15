@@ -1,52 +1,73 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
-import ManeleList from "../components/ManeleList";
-import  {requestManeleByArtist, changeInput} from '../actions';
+import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist} from '../actions';
+import InfoItem from '../components/InfoItem';
 
 const mapStateToProps = state => {
     return {
-        // artists
-        artistRequest: state.requestManeleByArtists.manele,
-        isPending: state.requestManeleByArtists.isPending,
-        artist: state.checkInputArtist.artist
-        
+        allManele: state.requestAllManeleR.allManele,
+        // allArtists: state.requestAllArtistsR.allArtists,
+        artist: state.requestArtistR.artist,
+        clickedArtist: state.clickArtistR.artistClicked,
+        displayInfoManele: state.requestAllManeleR.displayManele
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onRequestManeleByArtists: (artist) => dispatch(requestManeleByArtist(artist)),
-        onChangeInput: (event) => dispatch(changeInput(event.target.value))
+        onRequestAllManele: () => dispatch(requestAllManele()),
+        onRequestAllArtists: () => dispatch(requestAllArtists()),
+        onRequestArtist: (artist) => dispatch(requestArtist('salam')),
+        onClickArtist: (event) => dispatch(clickArtist(event.target.text())) // aici trebuie sa ma uit mai bine cum se face dar ceva de genul asta
     }
 }
 
 class ManeleSection extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            displayInfo: false
+        }
+    }
 
-    // componentDidMount() {
-    //     this.props.onRequestManeleByArtists();
-    // }
+    componentDidMount() {
+        // this.props.onRequestAllArtists();
+    }
+
+
 
     render() {
-        const {artist, onChangeInput, onRequestManeleByArtists, artistRequest} = this.props;
+        const {allManele, onRequestAllManele, artist} = this.props;
+        const maneleTitles = allManele.map(manea => manea.title);
+        console.log(maneleTitles);
+        // console.log(allArtists);
+        console.log(this.props.displayInfoManele)
         console.log(artist);
-        console.log(artistRequest);
-        
+
+        // all Manele
         return (
             <div style={{border: "1px solid blue", height: "500px"}}>
-                <Option 
-                    instructions="Cauta artistul de muzica clasica:"
-                    instruction1="artist"
-                    change={onChangeInput}
-                    clicked={() => onRequestManeleByArtists(artist)}
-                />
-                <Option 
-                    instructions="Cauta artistul dupa gen:"
-                    instruction1="gen"
-                />
-                {artistRequest.name ? <ManeleList artist={artistRequest} /> : null}
-
-
+                <Option
+                    instruction1="Afiseaza toata lista de manele, manelistule!" 
+                    button={true}
+                    message="Afiseaza"
+                    click={onRequestAllManele}
+                    /> 
+                <Option
+                    instruction1="Cauta un artist!" 
+                    dropdown={true}
+                    // click={this.props.onRequestArtist}
+                    /> 
+                {this.props.displayInfoManele ? 
+                    allManele.map(manea => <InfoItem
+                     title={manea.title}
+                     gendre={manea.gendre}
+                     link={manea.link}
+                     artist={manea.artist}
+                     key={manea.id} />)
+                      : null}
+                 
             </div>
         )
     }
