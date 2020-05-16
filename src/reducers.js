@@ -11,7 +11,10 @@ import {CHANGE_INPUT,
         REQUEST_ARTIST_SUCCESS,
         REQUEST_ARTIST_FAILED,
         CLICK_ARTIST,
-        MANEA_CHANGE} from './constants';
+        MANEA_CHANGE,
+        REQUEST_MANEA_SUCCESS,
+        REQUEST_MANEA_PENDING,
+        REQUEST_MANEA_FAILED} from './constants';
 
 const initialStateInput = {
     word: ""
@@ -173,6 +176,27 @@ export const changeInputManea = (state=initalStateInputManea, action={}) => {
     switch(action.type) {
         case MANEA_CHANGE:
             return Object.assign({}, state, {maneaTitle: action.payload});
+        default:
+            return state;
+    }
+}
+
+// request manea;
+
+const initialStateManeaRequest = {
+    manea: '',
+    isPending: false,
+    error: ''
+}
+
+export const requestManeaR = (state=initialStateManeaRequest, action={}) => {
+    switch(action.type) {
+        case REQUEST_MANEA_PENDING:
+            return Object.assign({}, state, {isPending:true});
+        case REQUEST_MANEA_SUCCESS:
+            return Object.assign({}, state, {manea: action.payload, isPending: false});
+        case REQUEST_MANEA_FAILED:
+            return Object.assign({}, state, {error: action.payload, isPending: false});
         default:
             return state;
     }

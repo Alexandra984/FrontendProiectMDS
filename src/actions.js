@@ -11,7 +11,10 @@ import {CHANGE_INPUT,
         REQUEST_ARTIST_SUCCESS,
         REQUEST_ARTIST_FAILED,
         CLICK_ARTIST,
-        MANEA_CHANGE } from './constants';
+        MANEA_CHANGE,
+        REQUEST_MANEA_PENDING,
+        REQUEST_MANEA_SUCCESS,
+        REQUEST_MANEA_FAILED } from './constants';
 
 import {apiLink} from './api/api';
 
@@ -95,3 +98,11 @@ export const changeManea = (text) => ({
     payload: text
 
 })
+
+export const requestManea = (manea) => (dispatch) => {
+    dispatch({type: REQUEST_MANEA_PENDING})
+    fetch(`${apiLink}/manea/title?title=${manea}`, requestOptions)
+    .then(response => response.json())
+    .then(data => dispatch({type: REQUEST_MANEA_SUCCESS, payload: data}))
+    .catch(error => dispatch({type: REQUEST_MANEA_FAILED, payload: error}))
+}

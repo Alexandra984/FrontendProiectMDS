@@ -4,10 +4,11 @@ const InfoItem = props => {
     return (
         <div>
             <h1>{props.title}</h1>
-            <p>{props.gendre}</p>
+            <p>{props.genre}</p>
             <p>{props.link}</p>
             <p>{props.artist}</p>
-            bauuuu
+            <p>{props.age}</p>
+            <p>{props.biography}</p>
         </div>
     )
 }
