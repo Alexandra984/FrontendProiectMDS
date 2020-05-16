@@ -10,7 +10,8 @@ import {CHANGE_INPUT,
         REQUEST_ARTIST_PENDING,
         REQUEST_ARTIST_SUCCESS,
         REQUEST_ARTIST_FAILED,
-        CLICK_ARTIST } from './constants';
+        CLICK_ARTIST,
+        MANEA_CHANGE } from './constants';
 
 import {apiLink} from './api/api';
 
@@ -77,7 +78,7 @@ export const requestAllArtists = () => (dispatch) => {
 
 export const requestArtist = (artist) => (dispatch) => {
     dispatch({type: REQUEST_ARTIST_PENDING})
-    fetch(`${apiLink}/artist/one?name=${'salam'}`, requestOptions)
+    fetch(`${apiLink}/artist/one?name=${artist}`, requestOptions)
     .then(response => response.json())
     .then(data => dispatch({type: REQUEST_ARTIST_SUCCESS, payload: data}))
     .catch(error => dispatch({type: REQUEST_ARTIST_FAILED, payload: error}))
@@ -86,4 +87,11 @@ export const requestArtist = (artist) => (dispatch) => {
 export const clickArtist = (text) => ({
     type: CLICK_ARTIST,
     payload: text
+})
+
+
+export const changeManea = (text) => ({
+    type: MANEA_CHANGE,
+    payload: text
+
 })
