@@ -14,7 +14,11 @@ import {CHANGE_INPUT,
         MANEA_CHANGE,
         REQUEST_MANEA_SUCCESS,
         REQUEST_MANEA_PENDING,
-        REQUEST_MANEA_FAILED} from './constants';
+        REQUEST_MANEA_FAILED,
+        REQUEST_MANEA_BY_GEN_PENDING,
+        REQUEST_MANEA_BY_GEN_SUCCESS,
+        REQUEST_MANEA_BY_GEN_FAILED,
+        CLICK_GENRE} from './constants';
 
 const initialStateInput = {
     word: ""
@@ -201,3 +205,37 @@ export const requestManeaR = (state=initialStateManeaRequest, action={}) => {
             return state;
     }
 }
+
+const initialStateGenRequest = {
+    manele: '',
+    isPending: false,
+    error: ''
+}
+
+
+export const requestManeleByGenR = (state=initialStateGenRequest, action={}) => {
+    switch(action.type) {
+        case REQUEST_MANEA_BY_GEN_PENDING:
+            return Object.assign({}, state, {isPending:true});
+        case REQUEST_MANEA_BY_GEN_SUCCESS:
+            return Object.assign({}, state, {manele: action.payload, isPending: false});
+        case REQUEST_MANEA_BY_GEN_FAILED:
+            return Object.assign({}, state, {error: action.payload, isPending: false});
+        default:
+            return state;
+    }
+}
+
+const intialStateClickGenre = {
+    genreClicked: ''
+}
+
+export const clickGenreR = (state=intialStateClickGenre, action={}) => {
+    switch(action.type) {
+        case CLICK_GENRE:
+            return Object.assign({}, state, {genreClicked: action.payload});
+        default:
+            return state;
+    }
+}
+

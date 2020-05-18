@@ -14,7 +14,11 @@ import {CHANGE_INPUT,
         MANEA_CHANGE,
         REQUEST_MANEA_PENDING,
         REQUEST_MANEA_SUCCESS,
-        REQUEST_MANEA_FAILED } from './constants';
+        REQUEST_MANEA_FAILED,
+        REQUEST_MANEA_BY_GEN_PENDING,
+        REQUEST_MANEA_BY_GEN_SUCCESS,
+        REQUEST_MANEA_BY_GEN_FAILED,
+        CLICK_GENRE } from './constants';
 
 import {apiLink} from './api/api';
 
@@ -105,4 +109,18 @@ export const requestManea = (manea) => (dispatch) => {
     .then(response => response.json())
     .then(data => dispatch({type: REQUEST_MANEA_SUCCESS, payload: data}))
     .catch(error => dispatch({type: REQUEST_MANEA_FAILED, payload: error}))
+}
+
+
+export const clickGenre = (text) => ({
+    type: CLICK_GENRE,
+    payload: text
+})
+
+export const requestByGenre = (gen) => (dispatch) => {
+    dispatch({type: REQUEST_MANEA_BY_GEN_PENDING})
+    fetch(`${apiLink}/manea/genre?genre=${gen}`, requestOptions)
+    .then(response => response.json())
+    .then(data => dispatch({type: REQUEST_MANEA_BY_GEN_SUCCESS, payload: data}))
+    .catch(error => dispatch({type: REQUEST_MANEA_BY_GEN_FAILED, payload: error}))
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
-import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea} from '../actions';
+import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre } from '../actions';
 import InfoItem from '../components/InfoItem';
 
 const mapStateToProps = state => {
@@ -13,7 +13,9 @@ const mapStateToProps = state => {
         displayInfoManele: state.requestAllManeleR.displayManele,
         allArtists: state.requestAllArtistsR.allArtists,
         maneaInput: state.changeInputManea.maneaTitle,
-        manea: state.requestManeaR.manea
+        manea: state.requestManeaR.manea,
+        manele: state.requestManeleByGenR.manele,
+        clickedGenre: state.clickGenreR.genreClicked
     }
 }
 
@@ -24,7 +26,9 @@ const mapDispatchToProps = (dispatch) => {
         onRequestArtist: (artist) => dispatch(requestArtist(artist)),
         onClickArtist: (event) => dispatch(clickArtist(event.target.textContent)),
         onChangeManea: (event) => dispatch(changeManea(event.target.value)),
-        onRequestManea: (manea) => dispatch(requestManea(manea))
+        onRequestManea: (manea) => dispatch(requestManea(manea)),
+        onRequestManeleByGen: (gen) => dispatch(requestByGenre(gen.toUpperCase())),
+        onClickGenre: (event) => dispatch(clickGenre(event.target.textContent))
     }
 }
 
@@ -42,10 +46,11 @@ class ManeleSection extends React.Component {
 
     render() {
         // console.log(this.props.clickedArtist);
-        const {allManele, manea, onRequestAllManele, maneaInput, allArtists, artist} = this.props;
+        const {allManele, manea, onRequestAllManele, allArtists, artist, manele} = this.props;
         // console.log(maneaInput);
         // console.log(this.props.artist);
-
+        const genuri=["Tristete", "Smecherie", "Bautura", "Dragoste"]
+        // console.log(this.props.manele)
         // all Manele
         return (
             <div style={{border: "1px solid blue", height: "500px"}}>
@@ -74,6 +79,18 @@ class ManeleSection extends React.Component {
                     message="Cauta!"
                     click2={() => this.props.onRequestManea(this.props.maneaInput)}
                 />
+
+                <Option
+                    instruction1="Cauta manele dupa gen"
+                    button={true}
+                    message="Cauta!"
+                    dropdown={true}
+                    names={genuri}
+                    click={this.props.onClickGenre}
+                    click2={() => this.props.onRequestManeleByGen(this.props.clickedGenre.toUpperCase())}
+
+                />
+
                 {this.props.displayInfoManele ? 
                     allManele.map(manea => <InfoItem
                      title={manea.title}
@@ -93,6 +110,13 @@ class ManeleSection extends React.Component {
                     genre={manea[0].genre}
                     link={manea[0].link}
                  /> : null }
+                {manele ? manele.map(manea => <InfoItem 
+                    title={manea.title}
+                    genre={manea.genre}
+                    link={manea.link}
+                    artist={manea.artist}
+                    key={manea.id}
+                />) : null}
             </div>
         )
     }
