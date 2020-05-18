@@ -239,3 +239,20 @@ export const clickGenreR = (state=intialStateClickGenre, action={}) => {
     }
 }
 
+const initialStateNewManea = {
+    data : {
+        title:'',
+        genre:'',
+        link:'',
+        artist:''
+    }
+}
+
+export const createManeaR = (state=initialStateNewManea, action={}) => {
+    switch(action.type) {
+        case CHANGE_INPUT:
+            return Object.assign({}, state, {data: action.payload})
+        default:
+            return state;
+    }
+}

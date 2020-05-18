@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
-import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre } from '../actions';
+import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeInput } from '../actions';
 import InfoItem from '../components/InfoItem';
 
 const mapStateToProps = state => {
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
         maneaInput: state.changeInputManea.maneaTitle,
         manea: state.requestManeaR.manea,
         manele: state.requestManeleByGenR.manele,
-        clickedGenre: state.clickGenreR.genreClicked
+        clickedGenre: state.clickGenreR.genreClicked,
+        data: state.createManeaR.data
     }
 }
 
@@ -28,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
         onChangeManea: (event) => dispatch(changeManea(event.target.value)),
         onRequestManea: (manea) => dispatch(requestManea(manea)),
         onRequestManeleByGen: (gen) => dispatch(requestByGenre(gen.toUpperCase())),
-        onClickGenre: (event) => dispatch(clickGenre(event.target.textContent))
+        onClickGenre: (event) => dispatch(clickGenre(event.target.textContent)),
+        // onChangeData: (data) => dispatch(changeInput)
     }
 }
 
@@ -89,6 +91,12 @@ class ManeleSection extends React.Component {
                     click={this.props.onClickGenre}
                     click2={() => this.props.onRequestManeleByGen(this.props.clickedGenre.toUpperCase())}
 
+                />
+                <Option 
+                    instruction1="Adauga o manea, manelistule"
+                    button={true}
+                    message="Adauga!"
+                    inputs={true}   
                 />
 
                 {this.props.displayInfoManele ? 

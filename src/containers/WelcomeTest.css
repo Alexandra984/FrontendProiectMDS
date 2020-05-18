@@ -1,3 +1,16 @@
 .WelcomeTest {
-    border: 1px solid red;
+    border: 1 px solid #eee;
+    background-color: #fff;
+    height: 30%;
+    width: 50%;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    z-index: 200px;
 }
+
