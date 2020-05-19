@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Option from "./Option";
 import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeInput } from '../actions';
 import InfoItem from '../components/InfoItem';
+import './ManeleSection.css';
 
 const mapStateToProps = state => {
     return {
@@ -55,7 +56,7 @@ class ManeleSection extends React.Component {
         // console.log(this.props.manele)
         // all Manele
         return (
-            <div style={{border: "1px solid blue", height: "500px"}}>
+            <div className="ManeleSection">
                 <Option
                     instruction1="Afiseaza toata lista de manele, manelistule!" 
                     button={true}

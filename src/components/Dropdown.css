@@ -6,9 +6,6 @@
     padding:20px;
     margin-top:20px;
 }
-.mainmenubtn:hover {
-    background-color: blue;
-    }
 .dropdown {
     position: relative;
     display: inline-block;
@@ -21,7 +18,7 @@
     overflow: scroll;
 }
 .dropdown-child a {
-    color: blue;
+    border-radius: 0px;
     padding: 20px;
     text-decoration: none;
     display: block;

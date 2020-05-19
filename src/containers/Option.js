@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import Dropdown from '../components/Dropdown';
 import Button from '../components/Button';
+import './Option.css'
 
 class Option extends Component {
     render() {
         return (
-            <div style={{border: "1px solid purple", height:"200px", width:"200px", margin: "5px"}}>
+            <div className="Option" style={{border: "1px solid purple", height:"250px", width:"250px", margin: "5px"}}>
                 <h5>{this.props.instruction1}</h5> 
                 {this.props.dropdown ? <Dropdown 
                     click={this.props.click}

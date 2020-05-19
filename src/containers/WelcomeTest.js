@@ -55,7 +55,7 @@ class WelcomeTest extends Component {
             )
 
         } else {
-            return (<h3>Alege ce vrei sa faci!</h3>);
+            return null;
         }
     }
 }
