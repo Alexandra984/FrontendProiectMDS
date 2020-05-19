@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 import {changeInput, clickButton, clickButtonExit} from '../actions';
 
 import Input from '../components/Input';
