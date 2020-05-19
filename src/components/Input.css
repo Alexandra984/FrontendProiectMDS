@@ -1,0 +1,15 @@
+Input {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #aaa;
+    width: 60px;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+input:focus {
+    border-color: red;
+}
+

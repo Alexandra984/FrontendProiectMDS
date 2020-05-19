@@ -44,10 +44,10 @@ class WelcomeTest extends Component {
             return(
                 <div className="WelcomeTest">
                     {message ? <TestResponse message={message} clicked={onClickButtonExit} /> : 
-                    ( <div>
+                    ( <div className="Content">
                         <h1>Completeaza versul urmator:</h1>
-                    <p>Am gasit in geanta ta un <Input 
-                    change={onChangeInput} /> de la altcineva...</p>
+                    <em>"Am gasit in geanta ta un <Input 
+                    change={onChangeInput} /> de la altcineva..."</em>
                     <button onClick={onClickButton}>Verifica!</button>
                     </div>)
                     }
