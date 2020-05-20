@@ -18,14 +18,42 @@ import {CHANGE_INPUT,
         REQUEST_MANEA_BY_GEN_PENDING,
         REQUEST_MANEA_BY_GEN_SUCCESS,
         REQUEST_MANEA_BY_GEN_FAILED,
-        CLICK_GENRE } from './constants';
+        CLICK_GENRE,
+        CHANGE_TITLE,
+        CHANGE_GENRE,
+        CHANGE_LINK,
+        CHANGE_ARTIST,
+        POST_MANEA_PENDING,
+        POST_MANEA_SUCCESS,
+        POST_MANEA_FAILED } from './constants';
 
 import {apiLink} from './api/api';
+
 
 export const changeInput = (text) => ({
     type: CHANGE_INPUT,
     payload: text
 })
+
+export const changeTitle = (text) => ({
+    type: CHANGE_TITLE,
+    payload: text
+})
+
+export const changeGenre = (text) => ({
+    type: CHANGE_GENRE,
+    payload: text
+})
+
+export const changeLink = (text) => ({
+    type: CHANGE_LINK,
+    payload: text
+})
+export const changeArtist = (text) => ({
+    type: CHANGE_ARTIST,
+    payload: text
+})
+
 
 export const clickButton = () => ({
     type: CLICK_BUTTON
@@ -124,3 +152,20 @@ export const requestByGenre = (gen) => (dispatch) => {
     .then(data => dispatch({type: REQUEST_MANEA_BY_GEN_SUCCESS, payload: data}))
     .catch(error => dispatch({type: REQUEST_MANEA_BY_GEN_FAILED, payload: error}))
 }
+
+// const data={title: "blabla", genre: "SMECHERIE", link: "fjfjfhf", artist: "mamajdfhfs"};
+
+
+// const requestOptions2 = {
+//     method: 'POST',
+//     headers: myHeaders,
+//     body: JSON.stringify(data),
+//     redirect: 'follow'
+//   };
+// export const postManea = () => (dispatch) => {
+//     dispatch({type: POST_MANEA_PENDING})
+//     fetch(`${apiLink}/manea`, requestOptions2)
+//     .then(response => response.json())
+//     .then(data => dispatch({type: POST_MANEA_SUCCESS, payload: data}))
+//     .catch(error => dispatch({type: POST_MANEA_FAILED, payload: error}))
+// }

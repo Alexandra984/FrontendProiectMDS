@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
-import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeInput } from '../actions';
+import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeInput, changeTitle, changeGenre, changeArtist, changeLink } from '../actions';
 import InfoItem from '../components/InfoItem';
 import './ManeleSection.css';
+import {apiLink} from '../api/api';
 
 const mapStateToProps = state => {
     return {
@@ -17,7 +18,10 @@ const mapStateToProps = state => {
         manea: state.requestManeaR.manea,
         manele: state.requestManeleByGenR.manele,
         clickedGenre: state.clickGenreR.genreClicked,
-        data: state.createManeaR.data
+        title: state.createTitleR.title,
+        genre: state.createGenreR.genre,
+        link: state.createLinkR.link,
+        artistPost: state.createArtistR.artistPost
     }
 }
 
@@ -31,7 +35,10 @@ const mapDispatchToProps = (dispatch) => {
         onRequestManea: (manea) => dispatch(requestManea(manea)),
         onRequestManeleByGen: (gen) => dispatch(requestByGenre(gen.toUpperCase())),
         onClickGenre: (event) => dispatch(clickGenre(event.target.textContent)),
-        // onChangeData: (data) => dispatch(changeInput)
+        onChangeTitle: (event) => dispatch(changeTitle(event.target.value)),
+        onChangeGenre: (event) => dispatch(changeGenre(event.target.value)),
+        onChangeLink: (event) => dispatch(changeLink(event.target.value)),
+        onChangeArtist: (event) => dispatch(changeArtist(event.target.value))
     }
 }
 
@@ -47,10 +54,38 @@ class ManeleSection extends React.Component {
         this.props.onRequestAllArtists();
     }
 
+    onClickButton = (data) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: 'follow'
+          };
+
+        fetch(`${apiLink}/manea`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+    }
     render() {
         // console.log(this.props.clickedArtist);
-        const {allManele, manea, onRequestAllManele, allArtists, artist, manele} = this.props;
+        const {allManele, manea, onRequestAllManele, allArtists, artist, manele, title, genre, link, artistPost} = this.props;
         // console.log(maneaInput);
+        // console.log(title);
+        // console.log(genre);
+        // console.log(link);
+        // console.log(artistPost);
+        const data = {
+            title,
+            genre,
+            link,
+            artist:  artistPost
+        }
+        console.log(data);
         // console.log(this.props.artist);
         const genuri=["Tristete", "Smecherie", "Bautura", "Dragoste"]
         // console.log(this.props.manele)
@@ -98,6 +133,11 @@ class ManeleSection extends React.Component {
                     button={true}
                     message="Adauga!"
                     inputs={true}   
+                    change01={this.props.onChangeTitle}
+                    change02={this.props.onChangeGenre}
+                    change03={this.props.onChangeLink}
+                    change04={this.props.onChangeArtist}
+                    click2={() =>this.onClickButton(data)}
                 />
 
                 <div className="Info">

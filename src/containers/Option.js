@@ -16,10 +16,10 @@ class Option extends Component {
                 {this.props.change ? <input onChange={this.props.change} placeholder="Introdu maneaua"/>: null}             
                 {this.props.inputs ? 
                     <div className="inputs">
-                    <input type="text" placeholder="Titlu"/>
-                    <input type="text" placeholder="Gen"/>
-                    <input type="text" placeholder="Link"/>
-                    <input type="text" placeholder="Artist"/>
+                    <input onChange={this.props.change01} type="text" placeholder="Titlu"/>
+                    <input  onChange={this.props.change02} type="text" placeholder="Gen"/>
+                    <input onChange={this.props.change03} type="text" placeholder="Link"/>
+                    <input onChange={this.props.change04} type="text" placeholder="Artist"/>
                     </div>
                      : null}
                 {this.props.button ? <Button click={this.props.click2} message={this.props.message}/> : null}

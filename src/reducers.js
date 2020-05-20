@@ -18,7 +18,11 @@ import {CHANGE_INPUT,
         REQUEST_MANEA_BY_GEN_PENDING,
         REQUEST_MANEA_BY_GEN_SUCCESS,
         REQUEST_MANEA_BY_GEN_FAILED,
-        CLICK_GENRE} from './constants';
+        CLICK_GENRE,
+        CHANGE_TITLE,
+        CHANGE_GENRE,
+        CHANGE_LINK,
+        CHANGE_ARTIST} from './constants';
 
 const initialStateInput = {
     word: ""
@@ -239,19 +243,53 @@ export const clickGenreR = (state=intialStateClickGenre, action={}) => {
     }
 }
 
-const initialStateNewManea = {
-    data : {
-        title:'',
-        genre:'',
-        link:'',
-        artist:''
+const initialStateTitle = {
+    title: ''
+}
+
+export const createTitleR = (state=initialStateTitle, action={}) => {
+    switch(action.type) {
+        case CHANGE_TITLE:
+            return Object.assign({}, state, {title: action.payload})
+        default:
+            return state;
     }
 }
 
-export const createManeaR = (state=initialStateNewManea, action={}) => {
+const initialStateGenre = {
+    genre: ''
+}
+
+export const createGenreR = (state=initialStateGenre, action={}) => {
     switch(action.type) {
-        case CHANGE_INPUT:
-            return Object.assign({}, state, {data: action.payload})
+        case CHANGE_GENRE:
+            return Object.assign({}, state, {genre: action.payload})
+        default:
+            return state;
+    }
+}
+
+const initialStateLink = {
+    link: ''
+}
+
+export const createLinkR = (state=initialStateLink, action={}) => {
+    switch(action.type) {
+        case CHANGE_LINK:
+            return Object.assign({}, state, {link: action.payload})
+        default:
+            return state;
+    }
+}
+
+const initialStateArtistPost = {
+    artistPost: ''
+}
+
+export const createArtistR = (state=initialStateArtistPost, action={}) => {
+    switch(action.type) {
+        case CHANGE_ARTIST:
+            return Object.assign({}, state, {artistPost: action.payload})
         default:
             return state;
     }
