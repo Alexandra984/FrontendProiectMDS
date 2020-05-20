@@ -6,4 +6,26 @@
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc; 
     box-shadow: 3px 3px 5px 6px #ccc; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Option h5 {
+    color: #d54d7b;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.Option input {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #aaa;
+    width: 100px;
+    text-align: center;
+    font-style: italic;
+}
+
+.inputs * {
+    margin-left: 5px;
 }

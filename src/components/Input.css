@@ -9,7 +9,7 @@
     letter-spacing: 2px;
 }
 
-.Input input:focus {
+ input:focus {
     border-color: #d54d7b;
 }
 

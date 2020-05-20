@@ -15,7 +15,7 @@ class Option extends Component {
                     /> : null}
                 {this.props.change ? <input onChange={this.props.change} placeholder="Introdu maneaua"/>: null}             
                 {this.props.inputs ? 
-                    <div>
+                    <div className="inputs">
                     <input type="text" placeholder="Titlu"/>
                     <input type="text" placeholder="Gen"/>
                     <input type="text" placeholder="Link"/>
