@@ -100,6 +100,8 @@ class ManeleSection extends React.Component {
                     inputs={true}   
                 />
 
+                <div className="Info">
+                    
                 {this.props.displayInfoManele ? 
                     allManele.map(manea => <InfoItem
                      title={manea.title}
@@ -126,6 +128,7 @@ class ManeleSection extends React.Component {
                     artist={manea.artist}
                     key={manea.id}
                 />) : null}
+            </div>
             </div>
         )
     }

@@ -3,26 +3,34 @@
     color: white;
     border: none;
     cursor: pointer;
-    padding:20px;
-    margin-top:20px;
+    border-radius: 30px;
+    padding: 1px 20px;
+    z-index: 100;
 }
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 100;
 }
 .dropdown-child {
     display: none;
-    background-color: skyblue;
+    background-color: #fff;
     min-width: 200px;
     height: 200px;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    z-index: 100;
+    box-shadow: 1px 1px 2px 2px #ccc; 
 }
 .dropdown-child a {
     border-radius: 0px;
     padding: 20px;
     text-decoration: none;
     display: block;
+    z-index: 100;
 }
 .dropdown:hover .dropdown-child {
     display: block;
+    z-index: 100;
 }
