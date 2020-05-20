@@ -1,5 +1,9 @@
 .Option {
-    border: 1px solid red;
-    width: 200x;
-    height: 200px;
+    border: 1px solid #ccc;
+    height: 250px;
+    width: 250px; 
+    margin: 20px;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc; 
+    box-shadow: 3px 3px 5px 6px #ccc; 
 }

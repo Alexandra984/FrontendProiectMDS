@@ -25,7 +25,7 @@
 .WelcomeTest * {
     margin-bottom: 10px;
 }
-button {
+.WelcomeTest button {
     display: block;
     padding: 5px;
     border: none;

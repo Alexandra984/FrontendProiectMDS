@@ -1,4 +1,4 @@
-Input {
+.Input {
     outline: 0;
     border-width: 0 0 1px;
     border-color: #aaa;
@@ -9,7 +9,7 @@ Input {
     letter-spacing: 2px;
 }
 
-input:focus {
+.Input input:focus {
     border-color: #d54d7b;
 }
 
