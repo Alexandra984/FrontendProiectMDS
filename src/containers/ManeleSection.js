@@ -65,7 +65,7 @@ class ManeleSection extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.onRequestAllArtists();
+        this.props.onRequestAllArtists();
     }
 
     onClickButton = (data) => {
