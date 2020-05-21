@@ -1,12 +1,4 @@
-.ManeleSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-}
-
-.Info {
+.InfoItem {
     display: block;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc; 
@@ -14,8 +6,4 @@
     width: 74vw;
     height: 60vh;
     margin: 30px 0px;
-}
-
-.Info:first-child {
-    display: none;
 }
