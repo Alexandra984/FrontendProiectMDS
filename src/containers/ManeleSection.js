@@ -65,7 +65,7 @@ class ManeleSection extends React.Component {
     }
 
     componentDidMount() {
-        this.props.onRequestAllArtists();
+        // this.props.onRequestAllArtists();
     }
 
     onClickButton = (data) => {
@@ -187,31 +187,36 @@ class ManeleSection extends React.Component {
                 />
                 <div className="Info">
                  
+                
                 {this.state.displayAllManele ? 
                     allManele.map(manea => <InfoItem
                      title={manea.title}
                      genre={manea.genre}
+                     dlink={true}
                      link={manea.link}
                      artist={manea.artist}
                      key={manea.id} />)
                       : null}
-                
+              
                 {this.state.displayArtist ? 
                     <InfoItem 
                         title={artist.name}
                         age={artist.age}
                         biography={artist.biography}
+                        dlink={false}
                     />
                  : null}
                 {this.state.displayManea && this.props.manea ? <InfoItem 
                     title={manea[0].title}
                     genre={manea[0].genre}
                     link={manea[0].link}
+                    dlink={true}
                  /> : null }
                 {this.state.displayManele && manele ? manele.map(manea => <InfoItem 
                     title={manea.title}
                     genre={manea.genre}
                     link={manea.link}
+                    dlink={true}
                     artist={manea.artist}
                     key={manea.id}
                 />) : null}

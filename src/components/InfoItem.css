@@ -5,5 +5,50 @@
     box-shadow: 3px 3px 5px 6px #ccc; 
     width: 74vw;
     height: 60vh;
-    margin: 30px 0px;
+    margin: 30px 55px 0px 0px;
+    border: 1px solid red;
+    padding: 10px;
+}
+.InfoItem2 {
+    /* border: 1px solid #ccc; */
+    -webkit-box-shadow: 1px 1px 2px 2px #ccc;
+    -moz-box-shadow: 1px 1px 2px 2px #ccc; 
+    box-shadow: 1px 1px 2px 2px #ccc; 
+    margin: 10px 250px 30px 250px;
+    padding: 20px;
+}
+.InfoItem2 h1 {
+    font-family: "Great Vibes", cursive;
+    color: #d54d7b; 
+    font-size: 50px;
+}
+
+.genre {
+    color: #d54d7b;
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    border: 1px solid skyblue;
+    color: white;
+    background-color: skyblue;
+    border-radius: 30px;
+    padding: 3px 7px;
+}
+
+.artist {
+    font-family: "Great Vibes", cursive;
+    color: #d54d7b; 
+    font-size: 35px;
+}
+
+.age {
+    color: #d54d7b;
+}
+
+.biography {
+    font-style: italic;
+    color: #d54d7b; 
+    font-size: 20px;
 }

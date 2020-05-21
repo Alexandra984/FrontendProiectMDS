@@ -2,13 +2,13 @@ import React from "react";
 import './InfoItem.css';
 const InfoItem = props => {
     return (
-        <div>
+        <div className="InfoItem2">
             <h1>{props.title}</h1>
-            <p>{props.genre}</p>
-            <p>{props.link}</p>
-            <p>{props.artist}</p>
-            <p>{props.age}</p>
-            <p>{props.biography}</p>
+            <p className="genre">{props.genre}</p>
+             {props.dlink ? <a href={props.link} target="_blank">Asculta, barosane</a> : null}
+            <p className="artist">{props.artist}</p>
+            <p className="age">{props.age}</p>
+            <p className="biography">{props.biography}</p>
         </div>
     )
 }
