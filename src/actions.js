@@ -23,9 +23,7 @@ import {CHANGE_INPUT,
         CHANGE_GENRE,
         CHANGE_LINK,
         CHANGE_ARTIST,
-        POST_MANEA_PENDING,
-        POST_MANEA_SUCCESS,
-        POST_MANEA_FAILED } from './constants';
+       } from './constants';
 
 import {apiLink} from './api/api';
 
@@ -63,21 +61,6 @@ export const clickButtonExit = () => ({
     type: CLICK_BUTTON_EXIT
 })
 
-// const requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-//   };
-
-// var myHeaders = new Headers();
-// myHeaders.append("Content-Type", "application/json");
-
-// export const requestManeleByArtist = (artist) => (dispatch) => {
-//     dispatch({type: REQUEST_MANEA_ARTIST_PENDING})
-//     fetch(`${apiLink}/artist/one?name=${artist}`, requestOptions)
-//     .then(response => response.json())
-//     .then(data => dispatch({type: REQUEST_MANEA_ARTIST_SUCCESS, payload: data}))
-//     .catch(error => dispatch({type: REQUEST_MANEA_ARTIST_FAILED, payload: error}))
-// }
 
 const requestOptions = {
     method: 'GET',
@@ -87,13 +70,6 @@ const requestOptions = {
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-// export const requestAllManele = () => (dispatch) => {
-//     dispatch({type: REQUEST_ALL_MANELE_PENDING})
-//     fetch(`${apiLink}/artist`, requestOptions)
-//     .then(response => response.json())
-//     .then(data => dispatch({type: REQUEST_ALL_MANELE_SUCCESS, payload: data}))
-//     .catch(error => dispatch({type: REQUEST_ALL_MANELE_FAILED, payload: error}))
-// }
 
 export const requestAllManele = () => (dispatch) => {
     dispatch({type: REQUEST_ALL_MANELE_PENDING})
@@ -153,19 +129,3 @@ export const requestByGenre = (gen) => (dispatch) => {
     .catch(error => dispatch({type: REQUEST_MANEA_BY_GEN_FAILED, payload: error}))
 }
 
-// const data={title: "blabla", genre: "SMECHERIE", link: "fjfjfhf", artist: "mamajdfhfs"};
-
-
-// const requestOptions2 = {
-//     method: 'POST',
-//     headers: myHeaders,
-//     body: JSON.stringify(data),
-//     redirect: 'follow'
-//   };
-// export const postManea = () => (dispatch) => {
-//     dispatch({type: POST_MANEA_PENDING})
-//     fetch(`${apiLink}/manea`, requestOptions2)
-//     .then(response => response.json())
-//     .then(data => dispatch({type: POST_MANEA_SUCCESS, payload: data}))
-//     .catch(error => dispatch({type: POST_MANEA_FAILED, payload: error}))
-// }

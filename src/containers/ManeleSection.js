@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Option from "./Option";
-import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeInput, changeTitle, changeGenre, changeArtist, changeLink } from '../actions';
+import  {requestAllManele,  requestAllArtists, requestArtist, clickArtist, changeManea, requestManea,  requestByGenre, clickGenre, changeTitle, changeGenre, changeArtist, changeLink } from '../actions';
 import InfoItem from '../components/InfoItem';
 
 import './ManeleSection.css';
@@ -11,7 +11,6 @@ import {apiLink} from '../api/api';
 const mapStateToProps = state => {
     return {
         allManele: state.requestAllManeleR.allManele,
-        // allArtists: state.requestAllArtistsR.allArtists,
         artist: state.requestArtistR.artist,
         clickedArtist: state.clickArtistR.artistClicked,
         displayInfoManele: state.requestAllManeleR.displayManele,
@@ -104,29 +103,15 @@ class ManeleSection extends React.Component {
 
     }
     render() {
-        // console.log(this.props.clickedArtist);
-        let {allManele, manea, onRequestAllManele, allArtists, artist, manele, title, genre, link, artistPost, clickedArtist} = this.props;
-        // console.log(maneaInput);
-        // console.log(title);
-        // console.log(genre);
-        // console.log(link);
-        // console.log(artistPost);
-        // console.log(clickedArtist);
-        console.log("hello" + this.state.displayManele);
-        // console.log("maneaua cautata" +this.props.manea);
-        // console.log("artistul cautat" + this.props.artist);
-        // console.log("manelele cautate" + this.props.manele);
+        let {allManele, manea, onRequestAllManele, allArtists, artist, manele, title, genre, link, artistPost} = this.props;
+        
         const data = {
             title,
             genre: genre.toUpperCase(),
             link,
             artist:  artistPost
         }
-        // console.log(data);
-        // console.log(this.props.artist);
         const genuri=["Tristete", "Smecherie", "Bautura", "Dragoste"]
-        // console.log(this.props.manele)
-        // all Manele
         return (
             <div className="ManeleSection">
                 <Option
@@ -147,7 +132,6 @@ class ManeleSection extends React.Component {
                         this.props.onRequestArtist(this.props.clickedArtist); 
                         this.onVerifyArtist(this.state.displayAllManele, this.state.displayArtist, this.state.displayManea, this.state.displayManele)
                         }}
-                    // click={this.props.onRequestArtist}
                     /> 
                 
                 <Option 

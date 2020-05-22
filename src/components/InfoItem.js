@@ -5,7 +5,7 @@ const InfoItem = props => {
         <div className="InfoItem2">
             <h1>{props.title}</h1>
             <p className="genre">{props.genre}</p>
-             {props.dlink ? <a href={props.link} target="_blank">Asculta, barosane</a> : null}
+             {props.dlink ? <a href={props.link} target="_blank" rel="noopener noreferrer">Asculta, barosane</a> : null}
             <p className="artist">{props.artist}</p>
             <p className="age">{props.age}</p>
             <p className="biography">{props.biography}</p>
